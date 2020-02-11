@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
 
   has_one :order
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 end
