@@ -1,0 +1,4 @@
+<div class="cart_item">
+	<%= render "carts/cart_item", order_items: current_user.order.order_items %>
+	<%= link_to 'Confirm Order', carts_confirm_order_path, class: 'btn btn-primary' %>
+</div>

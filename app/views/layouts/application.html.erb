@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ShoppingCart</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <style>
+  li {
+    display: inline;
+    padding: 60px;
+  }
+  </style>
+
+  <body>
+
+    <ul>
+  <li><%= link_to "Home", root_path %></li>
+  
+
+  <% if current_user && current_user.admin %>
+ <%= link_to 'Edit profile', edit_user_registration_path %>
+<li><%= link_to "new product" , new_product_path %></li>
+<li><%= link_to "All products", products_path %></li>
+<li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+
+<% elsif current_user  %>
+   <%= link_to 'Edit profile', edit_user_registration_path %>
+   <li class="active cart" ><%= render 'layouts/cart' %></li> 
+   <li> <%= link_to 'Sign out', destroy_user_session_path, method: :delete %><li>
+   
+
+                
+<% else %> 
+<li><%= link_to 'Sign up', new_user_registration_path %></li>
+
+<li><%= link_to 'Sign in', new_user_session_path %></li>
+<% end %>
+
+ 
+   
+  </ul>
+
+        
+    	<%= yield %>
+      <p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+    </div>
+  </body>
+</html>
+
+
