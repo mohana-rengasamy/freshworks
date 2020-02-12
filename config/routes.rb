@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource :carts, only: [:show]
 
   get 'carts/confirm_order'
+  get 'carts/status'
 
   
 

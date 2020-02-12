@@ -1,1 +1,6 @@
 <p>Your Order is Confirmed. Kindly check your email for more details! Happy shopping!</p>
+<% current_user.order.order_items.each do |item| %>
+<li><p> Product: <%= item.product.title %></p></li>
+		<li><p> Price: <%= item.product.price %></p></li>
+		<p> Date placed: <%= (item.created_at) %></p>
+	<% end %>

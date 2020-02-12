@@ -17,7 +17,8 @@
 
   <body>
 
-    <ul>
+  <div class="container">
+  <ul>
   <li><%= link_to "Home", root_path %></li>
   
 
@@ -43,11 +44,16 @@
  
    
   </ul>
+  
+  
+
+    
 
         
     	<%= yield %>
       <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+    </div>
     </div>
   </body>
 </html>
