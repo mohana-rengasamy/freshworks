@@ -1,2 +1,13 @@
-<p>Your Order is Confirmed</p>
-
+<p>Dear <%= @current_user.email %>,</p>
+<p>Your Order is Confirmed. You have Ordered the following Items.</p>
+<hr>
+<% @current_user.order.order_items.each do |item| %>
+        <li><p> Product: <%= item.product.title %></p></li>
+        <li><p> Quantity: <%= item.quantity %> </p></li>
+		<li><p> Price: <%= item.product.price %></p></li>
+		<li><p> Date placed: <%= (item.created_at) %></p></li>
+		<hr>
+	<% end %>
+	<p>Regards,</p>
+<p>Freshcart</p>
+     

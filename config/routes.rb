@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   root to: "pages#home"
 
-  get 'pages/index'
+  #get 'pages/index'
 
   devise_for :users
 
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource :carts, only: [:show]
 
   get 'carts/confirm_order'
+  get 'carts/status'
 
   
 

@@ -1,2 +1,1 @@
-
-<%= link_to "#{current_user.order.order_items.count} items in cart and price #{current_user.order.subtotal}", carts_path %> 
+<%= link_to "cart( #{current_user.order.order_items.count} )" , carts_path %>
