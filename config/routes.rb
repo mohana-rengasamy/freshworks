@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   root to: "pages#home"
 
-  get 'pages/index'
+  #get 'pages/index'
 
   devise_for :users
 

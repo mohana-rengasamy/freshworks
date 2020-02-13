@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
         @user = User.find(user_id)
     
         mail(   :to      => @user.email,
-                :subject => "Welcome"
+                :subject => "Order Confirmation"
         ) do |format|
           format.html
         end

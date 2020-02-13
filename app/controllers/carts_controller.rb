@@ -8,8 +8,8 @@ class CartsController < ApplicationController
 	   if current_user && !current_user.order.nil? && current_user.order.order_items.count != 0 
 		user = current_user
 		mail = UserMailer.welcome_email(user.id)
-		mail.deliver_now
-		#mail.deliver_later
+		#mail.deliver_now
+		mail.deliver_later
 		current_user.order.order_items.each do |item|
 			OrderItemHistory.create(user_id: item.order.user.id, product_id: item.product.id)
 		   end

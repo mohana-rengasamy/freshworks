@@ -1,27 +1,41 @@
 <div class="cart_item">
+  <p align="left">
     <h5><%= "#{current_user.order.order_items.count} items in cart and price #{current_user.order.subtotal}" %> </h5>
-	<%= render "carts/cart_item", order_items: current_user.order.order_items %>
-	 <% if current_user && current_user.order.nil? %>
-	     <%= link_to 'Confirm Order', carts_status_path%>
-		 <%else%>
-	<%= link_to 'Confirm Order', carts_confirm_order_path, class: 'btn btn-primary' %>
-	<% end %>
-</div>
-<div>
- <head>
-      <style>
-         table, th, td {
-            border: 1px solid black;
-         }
-      </style>
-   </head>
-<body>
-<h3> Previous order </h3>
-  <table>
-	<% OrderItemHistory.where(user_id: current_user.id).each do |item|%>
-		<li><p> Product: <%= item.product.title %></p></li>
-		<li><p> Quantity: <%= item.quantity %> </p></li>
-		<li><p> Price: <%= item.product.price %></p></li>
-		<li><p> Date placed: <%= (item.created_at) %></p></li>
-	<% end %>
-</div>
+    <p align="right">
+      <% if current_user && current_user.order.nil? %>
+        <%= link_to 'Confirm Order', carts_status_path%>
+      <%else%>
+        <%= link_to 'Confirm Order', carts_confirm_order_path, class: 'btn btn-primary' %>
+      <% end %>
+      <hr>
+      <h3><u>Current Order </u></h3>
+      <br>
+      <%= render "carts/cart_item", order_items: current_user.order.order_items %>
+    </p>
+  </div>
+  <div>
+    <body>
+    <hr>
+      <h3> <u>Previous order </u> </h3>
+      <br>
+      <div class="col-md-6 col-md-offset-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Date placed and time </th>
+            </thead>
+            <tbody>
+            </tr>
+            <% OrderItemHistory.where(user_id: current_user.id).each do |item|%>
+              <tr>
+                <td> <%= item.product.title %></td>
+                <td> <%= item.product.price %> </td>
+                <td> <%= (item.created_at) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </body>
+    </div>
