@@ -55,7 +55,7 @@ Rails.application.configure do
     authentication: "plain",
     
     user_name: "priyamohana834@gmail.com",
-    password: "hellokrishna123"
+    password: ""
   }
 
 end
